@@ -1,7 +1,16 @@
+.Game-start-button-container {
+  width: 150px;
+}
+
 .Game-start-button {
   background: #046582;
   color: white;
   height: 42px;
-  width: 82px;
   font-size: 18px;
+}
+
+@media only screen and (max-width: 767px) {
+  .Game-start-button-container {
+    width: 100%;
+  }
 }

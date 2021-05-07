@@ -9,6 +9,7 @@ export const StartGameButton = (): ReactElement => {
     <button
       type='button'
       onClick={() => dispatch({ type: ActionType.START_GAME })}
+      className='Game-start-button-container'
     >
       <Paper className='Game-start-button flex-full-center'>Start Game</Paper>
     </button>

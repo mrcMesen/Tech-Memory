@@ -26,5 +26,10 @@ export const GameCounter = (): ReactElement => {
     };
   });
 
-  return <span className='Game-counter'>{time}</span>;
+  return (
+    <div className='Game-counter-container'>
+      <span className='Game-counter'>{time}</span>
+      <span className='Game-record'>Record: 00:00:00</span>
+    </div>
+  );
 };
