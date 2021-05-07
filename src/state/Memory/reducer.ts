@@ -9,10 +9,10 @@ export const Reducer = (state: State, action: Action): State => {
       return { ...state, finishedGameAt: new Date() };
     case ActionType.SHOW_CARD:
       return { ...state, cardsShown: [...state.cardsShown, action.payload] };
-    case ActionType.HIDE_CARD:
+    case ActionType.HIDE_CARDS:
       return {
         ...state,
-        cardsShown: state.cardsShown.filter(item => item !== action.payload),
+        cardsShown: [],
       };
     case ActionType.UPDATE_GUESSED_TECHS:
       return {
