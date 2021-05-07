@@ -1,0 +1,60 @@
+.App-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  /* background-color: #e3edf7; */
+  background-color: #e4f2f0;
+}
+
+.Title-content {
+  margin-top: 20px;
+  width: 80%;
+}
+.Title-text {
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.App-content {
+  flex: 1 1 0%;
+  margin: 20px auto;
+  width: 80%;
+}
+
+.Footer {
+  width: 100%;
+  min-height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Footer-presentation {
+  color: white;
+}
+
+.Footer h2,
+.Footer h4 {
+  font-weight: 200;
+  margin: 0;
+}
+
+.Footer h2 {
+  letter-spacing: 4px;
+}
+
+.Footer h4 {
+  letter-spacing: 3px;
+}
+
+@media only screen and (max-width: 768px) {
+  .Title-content {
+    margin-top: 10px;
+    padding: 0 20px;
+  }
+  .App-content {
+    flex: 1 1 0%;
+    width: 90%;
+  }
+}

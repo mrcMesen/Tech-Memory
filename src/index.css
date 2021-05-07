@@ -5,9 +5,26 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color: gray;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.icon {
+  margin: 4px;
+  width: 24px;
+  height: 24px;
+  stroke: #fff;
+}
+
+.bg-gradiant {
+  background: rgb(55, 48, 163);
+  background-image: linear-gradient(to top right, var(--tw-gradient-stops));
+  --tw-gradient-to: #7f1d1d;
+  --tw-gradient-from: #3730a3;
+  --tw-gradient-stops: var(--tw-gradient-from),
+    var(--tw-gradient-to, rgba(55, 48, 163, 0));
 }

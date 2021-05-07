@@ -1,0 +1,9 @@
+.Paper-container {
+  padding: 10px;
+  background: #e4f2f0;
+  margin: auto;
+  border-radius: 20px;
+  box-shadow: -8px -8px 15px rgba(2125, 255, 255, 0.7),
+    8px 8px 15px rgba(0, 0, 0, 0.1);
+  /* background: linear-gradient(145deg, #cddad8, #f4ffff); */
+}
