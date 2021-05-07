@@ -6,11 +6,11 @@
 }
 
 .Paper-insideShadow {
-  box-shadow: inset -8px -8px 15px rgba(0, 0, 0, 0.1),
-    inset 8px 8px 15px rgba(255, 255, 255, 0.7);
+  box-shadow: inset 6px 6px 10px 0 rgba(0, 0, 0, 0.2),
+    inset -6px -6px 10px 0 rgba(255, 255, 255, 0.5);
 }
 
 .Paper-outsideShadow {
-  box-shadow: -8px -8px 15px rgba(2125, 255, 255, 0.7),
+  box-shadow: -8px -8px 15px rgba(255, 255, 255, 0.7),
     8px 8px 15px rgba(0, 0, 0, 0.1);
 }
