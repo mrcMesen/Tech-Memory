@@ -1,0 +1,27 @@
+.Game-container {
+  /*  */
+}
+
+.Game-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.Game-counter {
+  font-size: 44px;
+  padding: 5px;
+}
+
+.Game-start-button {
+  /*  */
+}
+
+.Game-cards {
+  margin: 20px 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  column-gap: 40px;
+  row-gap: 40px;
+}

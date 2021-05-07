@@ -28,3 +28,19 @@ code {
   --tw-gradient-stops: var(--tw-gradient-from),
     var(--tw-gradient-to, rgba(55, 48, 163, 0));
 }
+
+button {
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.w-h-full {
+  height: 100%;
+  width: 100%;
+}
+.flex-full-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
