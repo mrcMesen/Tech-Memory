@@ -4,7 +4,7 @@ import { ReactNode, ReactElement } from 'react';
 import { Reducer } from './reducer';
 import { State, Dispatch } from './types';
 
-const initialState: State = { CardsShown: [], GuessedTech: [] };
+const initialState: State = { cardsShown: [], guessedTech: [] };
 
 interface ContextType {
   state: State;

@@ -1,6 +1,5 @@
-.Game-container {
-  /*  */
-}
+/* .Game-container {
+} */
 
 .Game-header {
   display: flex;
@@ -11,10 +10,6 @@
 .Game-counter {
   font-size: 44px;
   padding: 5px;
-}
-
-.Game-start-button {
-  /*  */
 }
 
 .Game-cards {

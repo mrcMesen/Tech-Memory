@@ -1,4 +1,6 @@
 import { useState, ReactElement } from 'react';
+import { useMemory } from '../../state/Memory';
+
 import { MemoryCard } from '../../components/MemoryCard';
 import { GameCounter } from '../../components/GameCounter';
 import { StartGameButton } from '../../components/StartGameButton';
@@ -8,10 +10,7 @@ import techsMocks from '../../app/mock-tech.json';
 
 export const Game = (): ReactElement => {
   const [open, setOpen] = useState(false);
-
-  const startGame = () => {
-    // call action
-  };
+  const { state } = useMemory();
 
   return (
     <div className='Game-container'>
@@ -23,8 +22,7 @@ export const Game = (): ReactElement => {
             corresponds to one of my favorite techs.
           </p>
         </div>
-        <StartGameButton />
-        <GameCounter />
+        {state.startedGameAt ? <GameCounter /> : <StartGameButton />}
       </section>
       <section className='Game-cards'>
         {techsMocks.map(tech => (
