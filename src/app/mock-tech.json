@@ -1,20 +1,26 @@
 [
   {
-    "name": "React JS"
+    "name": "React JS",
+    "id": "1"
   },
   {
-    "name": "Next Js"
+    "name": "Next Js",
+    "id": "2"
   },
   {
-    "name": "Node JS"
+    "name": "Node JS",
+    "id": "3"
   },
   {
-    "name": "Javascript"
+    "name": "Javascript",
+    "id": "4"
   },
   {
-    "name": "React Native"
+    "name": "React Native",
+    "id": "5"
   },
   {
-    "name": "Pyhton"
+    "name": "Pyhton",
+    "id": "6"
   }
 ]

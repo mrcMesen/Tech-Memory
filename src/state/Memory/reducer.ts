@@ -8,7 +8,11 @@ export const Reducer = (state: State, action: Action): State => {
     case ActionType.FINISH_GAME:
       return { ...state, finishedGameAt: new Date() };
     case ActionType.SHOW_CARD:
-      return { ...state, cardsShown: [...state.cardsShown, action.payload] };
+      return {
+        ...state,
+        startedGameAt: state.startedGameAt ? state.startedGameAt : new Date(),
+        cardsShown: [...state.cardsShown, action.payload],
+      };
     case ActionType.HIDE_CARDS:
       return {
         ...state,

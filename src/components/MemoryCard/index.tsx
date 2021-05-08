@@ -1,5 +1,4 @@
 import { Tech } from '../../app/types';
-import { useMemory } from '../../state/Memory';
 import { Paper } from '../Paper';
 import './styles.css';
 
@@ -7,16 +6,12 @@ interface Props {
   opened: boolean;
   tech: Tech;
   onClick: () => void;
+  disabled?: boolean;
 }
 
-export const MemoryCard = ({ opened, tech, onClick }: Props) => {
-  const { state } = useMemory();
-
+export const MemoryCard = ({ opened, tech, disabled, onClick }: Props) => {
   return (
-    <button
-      onClick={onClick}
-      disabled={Boolean(opened || !state.startedGameAt)}
-    >
+    <button onClick={onClick} disabled={opened || disabled}>
       <Paper
         className='MemoryCard flex-full-center overflow-hidden'
         shadow={opened ? 'inside' : 'outside'}
