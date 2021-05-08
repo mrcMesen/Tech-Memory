@@ -1,4 +1,5 @@
 .Game-start-button-container {
+  cursor: pointer;
   width: 150px;
 }
 

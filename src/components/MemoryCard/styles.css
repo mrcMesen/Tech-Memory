@@ -1,6 +1,7 @@
 .MemoryCard {
   min-height: 120px;
   position: relative;
+  cursor: pointer;
 }
 
 .MemoryCard-tech {
@@ -27,4 +28,10 @@
   font-size: 50px;
   font-weight: 700;
   color: #838383;
+}
+
+@media only screen and (max-width: 767px) {
+  .MemoryCard-tech {
+    font-size: 16px;
+  }
 }

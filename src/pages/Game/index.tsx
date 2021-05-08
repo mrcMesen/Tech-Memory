@@ -14,9 +14,7 @@ export const Game = (): ReactElement => {
   const { state, dispatch } = useMemory();
 
   const handleTryShowCard = (tech: Tech) => {
-    if (state.cardsShown.length < 2) {
-      dispatch({ type: ActionType.SHOW_CARD, payload: tech });
-    }
+    dispatch({ type: ActionType.SHOW_CARD, payload: tech });
     if (state.cardsShown.length === 1) {
       if (state.cardsShown[0].name === tech.name) {
         dispatch({ type: ActionType.UPDATE_GUESSED_TECHS, payload: tech });

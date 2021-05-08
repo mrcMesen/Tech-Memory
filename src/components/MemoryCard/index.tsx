@@ -1,4 +1,5 @@
 import { Tech } from '../../app/types';
+import { useMemory } from '../../state/Memory';
 import { Paper } from '../Paper';
 import './styles.css';
 
@@ -9,8 +10,13 @@ interface Props {
 }
 
 export const MemoryCard = ({ opened, tech, onClick }: Props) => {
+  const { state } = useMemory();
+
   return (
-    <button onClick={onClick} disabled={opened}>
+    <button
+      onClick={onClick}
+      disabled={Boolean(opened || !state.startedGameAt)}
+    >
       <Paper
         className='MemoryCard flex-full-center overflow-hidden'
         shadow={opened ? 'inside' : 'outside'}

@@ -26,3 +26,9 @@
   margin-top: 30px;
   margin-right: 20px;
 }
+
+@media only screen and (max-width: 767px) {
+  .Game-Chat {
+    margin-bottom: 15px;
+  }
+}
