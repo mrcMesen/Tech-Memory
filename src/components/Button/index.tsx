@@ -1,6 +1,5 @@
 import { ReactElement, ReactNode, ButtonHTMLAttributes } from 'react';
 import { Paper } from '../Paper';
-import { useMemory, ActionType } from '../../state/Memory';
 import './styles.css';
 
 interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -11,15 +10,11 @@ interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
 export const Button = ({
   className,
   type = 'button',
+  onClick,
   children,
 }: Props): ReactElement => {
-  const { dispatch } = useMemory();
   return (
-    <button
-      type={type}
-      onClick={() => dispatch({ type: ActionType.START_GAME })}
-      className='button-container'
-    >
+    <button type={type} onClick={onClick} className='button-container'>
       <Paper className={`button flex-full-center ${className}`}>
         {children}
       </Paper>

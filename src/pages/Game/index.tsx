@@ -37,6 +37,8 @@ export const Game = (): ReactElement => {
     }
   };
 
+  const handleStartGame = () => dispatch({ type: ActionType.START_GAME });
+
   return (
     <div className='Game-container'>
       {state.guessedTech.length === techList.length && (
@@ -50,7 +52,9 @@ export const Game = (): ReactElement => {
         {state.startedGameAt ? (
           <GameCounter />
         ) : (
-          <Button className='Game-button'>Start Game</Button>
+          <Button onClick={handleStartGame} className='Game-button'>
+            Start Game
+          </Button>
         )}
       </section>
       <section className='Game-cards'>

@@ -16,10 +16,10 @@ export const WinnerModal = (): ReactElement => {
   const router = useHistory();
 
   const time = useMemo(() => {
-    if (state?.startedGameAt && state.finishedGameAt) {
+    if (state?.startedGameAt && state?.finishedGameAt) {
       return calculateTime(state.startedGameAt, state.finishedGameAt);
     }
-  }, [state?.startedGameAt, state.finishedGameAt]);
+  }, [state.startedGameAt, state.finishedGameAt]);
 
   const handleClose = () => {
     dispatch({ type: ActionType.RESET_GAME });

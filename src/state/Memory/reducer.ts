@@ -10,7 +10,7 @@ export const Reducer = (state: State, action: Action): State => {
     case ActionType.SHOW_CARD:
       return {
         ...state,
-        startedGameAt: state.startedGameAt ? state.startedGameAt : new Date(),
+        startedGameAt: state?.startedGameAt ? state.startedGameAt : new Date(),
         cardsShown: [...state.cardsShown, action.payload],
       };
     case ActionType.HIDE_CARDS:
