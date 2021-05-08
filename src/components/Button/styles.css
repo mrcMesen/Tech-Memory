@@ -1,13 +1,15 @@
-.Game-start-button-container {
+.button-container {
   cursor: pointer;
-  width: 150px;
+  min-width: 150px;
 }
 
-.Game-start-button {
+.button {
   background: #046582;
   color: white;
   height: 42px;
   font-size: 18px;
+  padding: 0px;
+  margin: 10px 0;
 }
 
 @media only screen and (max-width: 767px) {

@@ -9,6 +9,9 @@
   margin-bottom: 50px;
 }
 
+.Game-button {
+  padding: 10px;
+}
 .Game-counter {
   font-size: 44px;
   padding: 5px;

@@ -1,0 +1,49 @@
+.WinnerModal-overlay {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+}
+
+.WinnerModal-content {
+  padding: 40px 60px;
+  background-color: white;
+  border-radius: 25px;
+}
+
+.WinnerModal-title {
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 22px;
+}
+
+.WinnerModal-input-container {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.WinnerModal-input {
+  font-size: 18px;
+  padding: 5px 10px;
+  margin-top: 10px;
+  min-width: 250px;
+  height: 38px;
+  border-radius: 25px;
+  border: solid 1px gray;
+  box-sizing: border-box;
+}
+
+.WinnerModal-button {
+  min-width: 250px;
+}
+
+@media only screen and (max-width: 767px) {
+  .WinnerModal-content {
+    padding: 20px;
+    margin: 20px;
+  }
+}

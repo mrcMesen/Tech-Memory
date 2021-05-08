@@ -4,8 +4,9 @@ import Confetti from 'react-confetti';
 
 import { MemoryCard } from '../../components/MemoryCard';
 import { GameCounter } from '../../components/GameCounter';
-import { StartGameButton } from '../../components/StartGameButton';
+import { Button } from '../../components/Button';
 import { GameFeedbackBot } from '../../components/GameFeedbackBot';
+import { WinnerModal } from '../../components/WinnerModal';
 import './styles.css';
 
 import techList from '../../app/mock-tech.json';
@@ -38,10 +39,19 @@ export const Game = (): ReactElement => {
 
   return (
     <div className='Game-container'>
-      {state.guessedTech.length === techList.length && <Confetti />}
+      {state.guessedTech.length === techList.length && (
+        <>
+          <Confetti />
+          <WinnerModal />
+        </>
+      )}
       <section className='Game-header'>
         <GameFeedbackBot />
-        {state.startedGameAt ? <GameCounter /> : <StartGameButton />}
+        {state.startedGameAt ? (
+          <GameCounter />
+        ) : (
+          <Button className='Game-button'>Start Game</Button>
+        )}
       </section>
       <section className='Game-cards'>
         {techCardsList.map((tech, index) => (
