@@ -24,11 +24,13 @@ const NotGuessedMessages = [
   { title: 'Que mal!', message: 'No te desanimes, la estamos pasando bien!' },
 ];
 
+const initialState = {
+  title: "Let's play Memory",
+  message: 'The game consists of finding the pairs of each image',
+};
+
 export const GameFeedbackBot = (): ReactElement => {
-  const [botState, setBotState] = useState<GameBoth>({
-    title: "Let's play Memory",
-    message: 'The game consists of finding the pairs of each image',
-  });
+  const [botState, setBotState] = useState<GameBoth>(initialState);
   const { state } = useMemory();
 
   const getBotState = () => {
@@ -54,7 +56,10 @@ export const GameFeedbackBot = (): ReactElement => {
         state: 'sad',
       });
     }
-  }, [state.guessed, state.notGuessed]);
+    if (!state.startedGameAt) {
+      setBotState(initialState);
+    }
+  }, [state.guessed, state.notGuessed, state.startedGameAt]);
 
   return (
     <div className='flex-full-center'>

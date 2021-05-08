@@ -27,6 +27,15 @@ export const Reducer = (state: State, action: Action): State => {
         notGuessed: 0,
         guessedTech: [...state.guessedTech, action.payload],
       };
+    case ActionType.RESET_GAME:
+      return {
+        cardsShown: [],
+        guessedTech: [],
+        startedGameAt: undefined,
+        finishedGameAt: undefined,
+        guessed: 0,
+        notGuessed: 0,
+      };
     default:
       return state;
   }

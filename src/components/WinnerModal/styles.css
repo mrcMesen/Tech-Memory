@@ -11,6 +11,7 @@
   padding: 40px 60px;
   background-color: white;
   border-radius: 25px;
+  z-index: 20;
 }
 
 .WinnerModal-title {
@@ -39,6 +40,12 @@
 
 .WinnerModal-button {
   min-width: 250px;
+}
+
+.WinnerModal-close-button {
+  min-width: 250px;
+  margin-top: 10px;
+  cursor: pointer;
 }
 
 @media only screen and (max-width: 767px) {

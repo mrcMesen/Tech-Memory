@@ -3,7 +3,7 @@ import { ReactEventHandler, ChangeEventHandler } from 'react';
 import { useHistory } from 'react-router-dom';
 
 import Firestore from '../../services/firestore';
-import { useMemory } from '../../state/Memory';
+import { ActionType, useMemory } from '../../state/Memory';
 import { HistoryRecord } from '../../app/types';
 import { calculateTime } from '../../utils/time';
 import { Button } from '../Button';
@@ -11,7 +11,7 @@ import { Button } from '../Button';
 import './styles.css';
 
 export const WinnerModal = (): ReactElement => {
-  const { state } = useMemory();
+  const { state, dispatch } = useMemory();
   const [nickName, setnickName] = useState<string>('');
   const router = useHistory();
 
@@ -19,10 +19,10 @@ export const WinnerModal = (): ReactElement => {
     if (state?.startedGameAt && state.finishedGameAt) {
       return calculateTime(state.startedGameAt, state.finishedGameAt);
     }
-  }, []);
+  }, [state?.startedGameAt, state.finishedGameAt]);
 
   const handleClose = () => {
-    //
+    dispatch({ type: ActionType.RESET_GAME });
   };
 
   const handleSaveRecord: ReactEventHandler<HTMLFormElement> = async event => {
@@ -39,7 +39,6 @@ export const WinnerModal = (): ReactElement => {
           hours: time.hours,
         },
       };
-      console.log(newRecord);
       await objFirestore.create(newRecord);
       handleClose();
       router.push('/records');
@@ -79,6 +78,9 @@ export const WinnerModal = (): ReactElement => {
           <Button type='submit' className='WinnerModal-button'>
             Save
           </Button>
+          <button onClick={handleClose} className='WinnerModal-close-button'>
+            &#10006; Cerrar
+          </button>
         </form>
       </div>
     </div>

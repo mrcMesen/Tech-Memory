@@ -8,6 +8,7 @@ export enum ActionType {
   HIDE_CARDS = 'HIDE_CARDS',
   UPDATE_GUESSED_TECHS = 'UPDATE_GUESSED_TECHS',
   NOTGUESSED = 'NOTGUESSED',
+  RESET_GAME = 'RESET_GAME',
 }
 
 export type Dispatch = (action: Action) => void;

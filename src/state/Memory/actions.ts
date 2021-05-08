@@ -10,4 +10,5 @@ export type Action =
   | {
       type: ActionType.UPDATE_GUESSED_TECHS;
       payload: Tech;
-    };
+    }
+  | { type: ActionType.RESET_GAME };
