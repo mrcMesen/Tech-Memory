@@ -7,6 +7,7 @@ export enum ActionType {
   SHOW_CARD = 'SHOW_CARD',
   HIDE_CARDS = 'HIDE_CARDS',
   UPDATE_GUESSED_TECHS = 'UPDATE_GUESSED_TECHS',
+  NOTGUESSED = 'NOTGUESSED',
 }
 
 export type Dispatch = (action: Action) => void;
@@ -16,4 +17,6 @@ export interface State {
   finishedGameAt?: Date;
   guessedTech: Tech[];
   cardsShown: Tech[];
+  guessed: number;
+  notGuessed: number;
 }

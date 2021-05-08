@@ -6,6 +6,7 @@ export type Action =
   | { type: ActionType.FINISH_GAME }
   | { type: ActionType.SHOW_CARD; payload: Tech }
   | { type: ActionType.HIDE_CARDS }
+  | { type: ActionType.NOTGUESSED }
   | {
       type: ActionType.UPDATE_GUESSED_TECHS;
       payload: Tech;

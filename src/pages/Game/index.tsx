@@ -1,9 +1,10 @@
-import { useState, ReactElement } from 'react';
+import { ReactElement } from 'react';
 import { useMemory, ActionType } from '../../state/Memory';
 
 import { MemoryCard } from '../../components/MemoryCard';
 import { GameCounter } from '../../components/GameCounter';
 import { StartGameButton } from '../../components/StartGameButton';
+import { GameFeedbackBot } from '../../components/GameFeedbackBot';
 import './styles.css';
 
 import techsMocks from '../../app/mock-tech.json';
@@ -11,7 +12,6 @@ import { Tech } from '../../app/types';
 
 export const Game = (): ReactElement => {
   const { state, dispatch } = useMemory();
-  const [message, setMessage] = useState<string>('');
 
   const handleTryShowCard = (tech: Tech) => {
     if (state.cardsShown.length < 2) {
@@ -20,9 +20,8 @@ export const Game = (): ReactElement => {
     if (state.cardsShown.length === 1) {
       if (state.cardsShown[0].name === tech.name) {
         dispatch({ type: ActionType.UPDATE_GUESSED_TECHS, payload: tech });
-        setMessage('Bien hecho! Haz encontrado una pareja');
       } else {
-        setMessage('Ohh! Lo siento sigue intentando');
+        dispatch({ type: ActionType.NOTGUESSED });
       }
       setTimeout(() => {
         dispatch({ type: ActionType.HIDE_CARDS });
@@ -33,16 +32,9 @@ export const Game = (): ReactElement => {
   return (
     <div className='Game-container'>
       <section className='Game-header'>
-        <div>
-          <h2>Let's play Memory</h2>
-          <p>
-            The game consists of finding the pairs of each image, each image
-            corresponds to one of my favorite techs.
-          </p>
-        </div>
+        <GameFeedbackBot />
         {state.startedGameAt ? <GameCounter /> : <StartGameButton />}
       </section>
-      <section>{message}</section>
       <section className='Game-cards'>
         {techsMocks.map((tech, index) => (
           <MemoryCard

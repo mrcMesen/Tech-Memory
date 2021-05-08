@@ -14,9 +14,13 @@ export const Reducer = (state: State, action: Action): State => {
         ...state,
         cardsShown: [],
       };
+    case ActionType.NOTGUESSED:
+      return { ...state, notGuessed: state.notGuessed + 1, guessed: 0 };
     case ActionType.UPDATE_GUESSED_TECHS:
       return {
         ...state,
+        guessed: state.guessed + 1,
+        notGuessed: 0,
         guessedTech: [...state.guessedTech, action.payload],
       };
     default:

@@ -8,12 +8,16 @@
 }
 
 .Title-content {
-  margin-top: 20px;
+  margin: 20px auto;
+  padding: 20px 0;
   width: 80%;
 }
 .Title-text {
   text-align: center;
   text-transform: uppercase;
+}
+.Title-description {
+  text-align: center;
 }
 
 .App-content {

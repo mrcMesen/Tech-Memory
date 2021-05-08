@@ -2,6 +2,11 @@ export interface Tech {
   name: string;
   uri?: string;
 }
+export interface GameBoth {
+  title: string;
+  message: string;
+  state?: 'happy' | 'sad';
+}
 export interface HistoryRecord {
   date: string;
   time: string;
