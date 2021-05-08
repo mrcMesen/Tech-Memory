@@ -1,5 +1,6 @@
 import { useMemo, ReactElement } from 'react';
 import { useMemory, ActionType } from '../../state/Memory';
+import Confetti from 'react-confetti';
 
 import { MemoryCard } from '../../components/MemoryCard';
 import { GameCounter } from '../../components/GameCounter';
@@ -37,6 +38,7 @@ export const Game = (): ReactElement => {
 
   return (
     <div className='Game-container'>
+      {state.guessedTech.length === techList.length && <Confetti />}
       <section className='Game-header'>
         <GameFeedbackBot />
         {state.startedGameAt ? <GameCounter /> : <StartGameButton />}

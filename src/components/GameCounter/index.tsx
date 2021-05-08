@@ -16,8 +16,6 @@ export const GameCounter = (): ReactElement => {
     }, 1000);
 
     if (state?.startedGameAt && state?.finishedGameAt) {
-      console.log('termino el juego');
-
       clearInterval(counter);
       calculateTime(state?.startedGameAt, state?.finishedGameAt);
     }
