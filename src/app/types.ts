@@ -10,12 +10,9 @@ export interface GameBoth {
 }
 export interface HistoryRecord {
   date: string;
-  time: {
-    seconds: string;
-    minutes: string;
-    hours: string;
-  };
   name: string;
+  duration: string;
+  fullDuration: number;
   pais?: string;
 }
 export interface FirestoreQuery {

@@ -33,11 +33,8 @@ export const WinnerModal = (): ReactElement => {
       const newRecord = {
         date: date.toLocaleDateString('en-US'),
         name: nickName,
-        time: {
-          seconds: time.seconds,
-          minutes: time.minutes,
-          hours: time.hours,
-        },
+        duration: time.duration,
+        fullDuration: time.fullDuration,
       };
       await objFirestore.create(newRecord);
       handleClose();
@@ -59,7 +56,7 @@ export const WinnerModal = (): ReactElement => {
         <h3 className='WinnerModal-title'>
           Felicidades por completar el juego
         </h3>
-        <p>Tu duración fué: {time?.fultime}</p>
+        <p>Tu duración fué: {time?.duration}</p>
         <p>
           Puedes guardar tu record y ver en que posición estas entre todos los
           que han participado.
