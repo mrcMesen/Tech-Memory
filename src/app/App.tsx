@@ -10,10 +10,13 @@ export default function App() {
       <Layout>
         <BrowserRouter>
           <Switch>
-            <Route path='/'>
+            <Route exact path='/'>
               <Game />
             </Route>
-            <Route path='/records'>
+            <Route exact path='/home'>
+              <Game />
+            </Route>
+            <Route exact path='/records'>
               <Records />
             </Route>
           </Switch>

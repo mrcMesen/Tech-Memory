@@ -13,13 +13,15 @@ export const GameCounter = (): ReactElement => {
       if (state?.startedGameAt) {
         const now = new Date();
 
-        setTime(calculateTime(state.startedGameAt, now));
+        setTime(calculateTime(state.startedGameAt, now).fultime);
       }
     }, 1000);
 
     if (state?.startedGameAt && state?.finishedGameAt) {
       clearInterval(counter);
-      setTime(calculateTime(state?.startedGameAt, state?.finishedGameAt));
+      setTime(
+        calculateTime(state?.startedGameAt, state?.finishedGameAt).fultime
+      );
     }
 
     return () => {

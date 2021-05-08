@@ -4,12 +4,10 @@ import { FirestoreQuery } from '../app/types';
 
 class Firestore<T> {
   collection: string;
-  company?: string;
   db: firebase.firestore.Firestore;
 
-  constructor(collection: string, company?: string) {
+  constructor(collection: string) {
     this.collection = collection;
-    this.company = company;
     this.db = firebase.firestore();
   }
   async read(id: string): Promise<undefined | T> {
@@ -31,8 +29,6 @@ class Firestore<T> {
       const querySnapshot: firebase.firestore.DocumentData = await this.db
         .collection(this.collection)
         .where(query.parameter, query.operator, query.data)
-        .where('company', '==', this.company)
-        .where('state', '==', 'active')
         .get();
       querySnapshot.forEach((doc: firebase.firestore.DocumentData) => {
         data.push({ id: doc.id, ...doc.data() });
@@ -47,8 +43,6 @@ class Firestore<T> {
       const data: T[] = [];
       const querySnapshot: firebase.firestore.QuerySnapshot = await this.db
         .collection(this.collection)
-        .where('company', '==', this.company)
-        .where('state', '==', 'active')
         .get();
       querySnapshot.forEach((doc: firebase.firestore.DocumentData) => {
         data.push({ id: doc.id, ...doc.data() });
@@ -61,10 +55,7 @@ class Firestore<T> {
   }
   async create(data: T): Promise<T | void> {
     try {
-      const docRef = await this.db.collection(this.collection).add({
-        ...data,
-        date: Date.now(),
-      });
+      const docRef = await this.db.collection(this.collection).add(data);
       const doc: firebase.firestore.DocumentData = await this.db
         .collection(this.collection)
         .doc(docRef.id)

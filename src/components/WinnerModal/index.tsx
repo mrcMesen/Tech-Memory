@@ -1,5 +1,10 @@
-import { ReactElement } from 'react';
+import { useState, useMemo, ReactElement } from 'react';
+import { ReactEventHandler, ChangeEventHandler } from 'react';
+import { useHistory } from 'react-router-dom';
+
+import Firestore from '../../services/firestore';
 import { useMemory } from '../../state/Memory';
+import { HistoryRecord } from '../../app/types';
 import { calculateTime } from '../../utils/time';
 import { Button } from '../Button';
 
@@ -7,9 +12,42 @@ import './styles.css';
 
 export const WinnerModal = (): ReactElement => {
   const { state } = useMemory();
+  const [nickName, setnickName] = useState<string>('');
+  const router = useHistory();
 
-  const handleSaveRecord = () => {
+  const time = useMemo(() => {
+    if (state?.startedGameAt && state.finishedGameAt) {
+      return calculateTime(state.startedGameAt, state.finishedGameAt);
+    }
+  }, []);
+
+  const handleClose = () => {
     //
+  };
+
+  const handleSaveRecord: ReactEventHandler<HTMLFormElement> = async event => {
+    event.preventDefault();
+    if (state?.finishedGameAt && time) {
+      const objFirestore = new Firestore<HistoryRecord>('records');
+      const date = state.finishedGameAt;
+      const newRecord = {
+        date: date.toLocaleDateString('en-US'),
+        name: nickName,
+        time: {
+          seconds: time.seconds,
+          minutes: time.minutes,
+          hours: time.hours,
+        },
+      };
+      console.log(newRecord);
+      await objFirestore.create(newRecord);
+      handleClose();
+      router.push('/records');
+    }
+  };
+
+  const handleChangeNickName: ChangeEventHandler<HTMLInputElement> = e => {
+    setnickName(e.target.value);
   };
 
   if (!state.startedGameAt || !state.finishedGameAt) {
@@ -22,10 +60,7 @@ export const WinnerModal = (): ReactElement => {
         <h3 className='WinnerModal-title'>
           Felicidades por completar el juego
         </h3>
-        <p>
-          Tu duración fué:{' '}
-          {calculateTime(state.startedGameAt, state.finishedGameAt)}
-        </p>
+        <p>Tu duración fué: {time?.fultime}</p>
         <p>
           Puedes guardar tu record y ver en que posición estas entre todos los
           que han participado.
@@ -35,7 +70,12 @@ export const WinnerModal = (): ReactElement => {
           onSubmit={handleSaveRecord}
         >
           <label htmlFor='input-record'>NickName</label>
-          <input className='WinnerModal-input' type='text' id='input-record' />
+          <input
+            onChange={handleChangeNickName}
+            className='WinnerModal-input'
+            type='text'
+            id='input-record'
+          />
           <Button type='submit' className='WinnerModal-button'>
             Save
           </Button>
