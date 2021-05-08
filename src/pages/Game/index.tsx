@@ -23,7 +23,7 @@ export const Game = (): ReactElement => {
     if (state.cardsShown.length === 1) {
       if (state.cardsShown[0].name === tech.name) {
         dispatch({ type: ActionType.UPDATE_GUESSED_TECHS, payload: tech });
-        if (state.guessedTech.length === techList.length) {
+        if (state.guessedTech.length + 1 === techList.length) {
           dispatch({ type: ActionType.FINISH_GAME });
         }
       } else {

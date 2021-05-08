@@ -11,20 +11,30 @@ export const GameCounter = (): ReactElement => {
     const counter = setInterval(() => {
       if (state?.startedGameAt) {
         const now = new Date();
-        let difTime = now.getTime() - state.startedGameAt.getTime();
-        difTime /= 1000;
-
-        const seconds = ('0' + Math.floor(difTime % 60)).slice(-2);
-        const minuts = ('0' + Math.floor((difTime / 60) % 60)).slice(-2);
-        const hours = ('0' + Math.floor((difTime / 3600) % 24)).slice(-2);
-
-        setTime(`${hours}:${minuts}:${seconds}`);
+        calculateTime(state.startedGameAt, now);
       }
     }, 1000);
+
+    if (state?.startedGameAt && state?.finishedGameAt) {
+      console.log('termino el juego');
+
+      clearInterval(counter);
+      calculateTime(state?.startedGameAt, state?.finishedGameAt);
+    }
+
     return () => {
       clearInterval(counter);
     };
-  });
+  }, [state?.startedGameAt, state?.finishedGameAt]);
+
+  const calculateTime = (initial: Date, finished: Date) => {
+    let difTime = finished.getTime() - initial.getTime();
+    difTime /= 1000;
+    const seconds = ('0' + Math.floor(difTime % 60)).slice(-2);
+    const minuts = ('0' + Math.floor((difTime / 60) % 60)).slice(-2);
+    const hours = ('0' + Math.floor((difTime / 3600) % 24)).slice(-2);
+    setTime(`${hours}:${minuts}:${seconds}`);
+  };
 
   return (
     <div className='Game-counter-container'>
