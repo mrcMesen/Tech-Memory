@@ -27,6 +27,19 @@
   margin-right: 20px;
 }
 
+.Game-Chat-title {
+  display: flex;
+  justify-content: space-between;
+}
+
+.Game-Chat-indicator-happy {
+  color: green;
+}
+
+.Game-Chat-indicator-sad {
+  color: red;
+}
+
 @media only screen and (max-width: 767px) {
   .Game-Chat {
     margin-bottom: 15px;

@@ -11,21 +11,27 @@ import './styles.css';
 
 const GuessedMessages = [
   {
-    title: 'Yeeaaa!',
+    title: '👏 Yeeaaa!',
     message: 'Bien hecho! Haz encontrado una pareja',
   },
-  { title: 'Extraordinario!', message: 'Sigue así! Podrás lograrlo!' },
+  {
+    title: '🎉 Extraordinario!',
+    message: 'Sigue así! Podrás lograrlo!',
+  },
 ];
 const NotGuessedMessages = [
   {
-    title: 'Ohhh no!',
+    title: '😅 Ohhh no!',
     message: 'Intenta recordarlas para más adelante.',
   },
-  { title: 'Que mal!', message: 'No te desanimes, la estamos pasando bien!' },
+  {
+    title: '😓 Que mal!',
+    message: 'No te desanimes, la estamos pasando bien!',
+  },
 ];
 
 const initialState = {
-  title: "Let's play Memory",
+  title: "😎 Let's play Memory",
   message: 'The game consists of finding the pairs of each image',
 };
 
@@ -69,7 +75,18 @@ export const GameFeedbackBot = (): ReactElement => {
         className='Game-Chat-botImg'
       />
       <Paper className='Game-Chat'>
-        <h2>{botState.title}</h2>
+        <h2 className='Game-Chat-title'>
+          <span>{botState.title}</span>
+          {botState?.state && (
+            <>
+              {botState.state === 'happy' ? (
+                <span className='Game-Chat-indicator-happy'>&#10003;</span>
+              ) : (
+                <span className='Game-Chat-indicator-sad'>&#10006;</span>
+              )}
+            </>
+          )}
+        </h2>
         <p>{botState.message}</p>
       </Paper>
     </div>
