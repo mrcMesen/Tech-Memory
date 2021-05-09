@@ -1,5 +1,5 @@
 export interface Tech {
-  id: string;
+  id?: string;
   name: string;
   uri?: string;
 }
@@ -9,6 +9,7 @@ export interface GameBoth {
   state?: 'happy' | 'sad';
 }
 export interface HistoryRecord {
+  id?: string;
   date: string;
   name: string;
   duration: string;

@@ -23,6 +23,11 @@ p {
   margin: 0;
 }
 
+a {
+  text-decoration: none;
+  color: gray;
+}
+
 .icon {
   margin: 4px;
   width: 24px;

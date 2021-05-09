@@ -9,9 +9,11 @@ import { calculateTime } from '../../utils/time';
 import { Button } from '../Button';
 
 import './styles.css';
+import { Spinner } from '../Spinner';
 
 export const WinnerModal = (): ReactElement => {
   const { state, dispatch } = useMemory();
+  const [loading, setLoading] = useState<boolean>(false);
   const [nickName, setnickName] = useState<string>('');
   const router = useHistory();
 
@@ -28,6 +30,7 @@ export const WinnerModal = (): ReactElement => {
   const handleSaveRecord: ReactEventHandler<HTMLFormElement> = async event => {
     event.preventDefault();
     if (state?.finishedGameAt && time) {
+      setLoading(true);
       const objFirestore = new Firestore<HistoryRecord>('records');
       const date = state.finishedGameAt;
       const newRecord = {
@@ -72,10 +75,19 @@ export const WinnerModal = (): ReactElement => {
             type='text'
             id='input-record'
           />
-          <Button type='submit' className='WinnerModal-button'>
+          <Button
+            type='submit'
+            className='WinnerModal-button'
+            disabled={loading}
+          >
+            {loading && <Spinner />}
             Save
           </Button>
-          <button onClick={handleClose} className='WinnerModal-close-button'>
+          <button
+            onClick={handleClose}
+            className='WinnerModal-close-button'
+            disabled={loading}
+          >
             &#10006; Cerrar
           </button>
         </form>

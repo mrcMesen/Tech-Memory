@@ -1,4 +1,5 @@
 import { ReactElement, ReactNode } from 'react';
+import Navigation from '../Navigation';
 import { Paper } from '../Paper';
 import { Footer } from './Footer';
 import './styles.css';
@@ -13,6 +14,7 @@ export const Layout = ({ children }: Props): ReactElement => {
       <Paper className='Title-content'>
         <h1 className='Title-text'>Memory Game</h1>
         <p className='Title-description'>Play memory with my favorite techs.</p>
+        <Navigation />
       </Paper>
       <main className='App-content'>{children}</main>
       <Footer />

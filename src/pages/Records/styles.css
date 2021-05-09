@@ -1,0 +1,44 @@
+.Records-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.Records-table {
+  margin: auto;
+}
+
+.Records-tbody tr:nth-child(-n + 3) {
+  position: relative;
+}
+
+.Records-tbody tr:nth-child(-n + 3)::after {
+  content: url('../../assets/star.svg');
+  padding: 2px;
+  color: #fff;
+  position: absolute;
+  border-radius: 50%;
+  height: 24px;
+  width: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.Records-tbody tr:nth-child(1)::after {
+  /* content: '1'; */
+  background-color: #d0b014;
+}
+
+.Records-tbody tr:nth-child(2)::after {
+  /* content: '2'; */
+  background-color: #bababa;
+}
+
+.Records-tbody tr:nth-child(3)::after {
+  /* content: '3'; */
+  background-color: #c77c30;
+}
+
+@media only screen and (max-width: 767px) {
+  .Records-cards {
+  }
+}

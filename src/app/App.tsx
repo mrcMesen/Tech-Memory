@@ -7,8 +7,8 @@ import { MemoryProvider } from '../state/Memory';
 export default function App() {
   return (
     <MemoryProvider>
-      <Layout>
-        <BrowserRouter>
+      <BrowserRouter>
+        <Layout>
           <Switch>
             <Route exact path='/'>
               <Game />
@@ -20,8 +20,8 @@ export default function App() {
               <Records />
             </Route>
           </Switch>
-        </BrowserRouter>
-      </Layout>
+        </Layout>
+      </BrowserRouter>
     </MemoryProvider>
   );
 }

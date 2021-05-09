@@ -1,0 +1,14 @@
+.Spinner {
+  transform: all;
+  animation: rotation 2s infinite linear;
+  margin: 0 5px;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
