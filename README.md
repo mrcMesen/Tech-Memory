@@ -1,8 +1,45 @@
-# Getting Started with Create React App
+# Memory Tech - Game
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Developed by Marco Mesén - [marcomesen.com](https://marcomesen.com)
+
+## Demo
+
+[Live Demo - Link](https://tech-memory.web.app/)
+![Image Demo](./src/assets/Demo.png)
+
+## Start proyect
+
+1. run `yarn install`
+2. create `.env` file in the root, use `example.env` as a guide.
+3. run `yarn start`
+
+## Tech
+
+- [React](https://reactjs.org/)
+- [Create React App](https://github.com/facebook/create-react-app)
+- [React-Router](https://reactrouter.com/)
+- [Hooks](https://es.reactjs.org/docs/hooks-intro.html)
+
+## Architecture
+
+The project was developed with Flux Architecture for State Managment - Based on this article: [marcomesen.com/blog](https://marcomesen.com/blog/state-handling-in-react-with-flux-architecture-using-usecontext-and-usereducer-hook)
+
+```
+-src
+---app                ~ Entry point for app, routing and some app generalities.
+---assets             ~ Assets as images and SVGs
+---components         ~ Components for app
+---pages              ~ Sreens for APP
+-----Game             ~ Login
+-----Records          ~ Mainly Screen
+---services           ~ Services config (Firebase)
+---state              ~ All the logic for State Managment.
+---utils              ~ Some utils functions
+```
 
 ## Available Scripts
+
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 In the project directory, you can run:
 
@@ -29,18 +66,12 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
+## Learn More About React and Create-React-App
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+## Icons
+
+This project used icons from [TablerIcons](https://tablericons.com/)
