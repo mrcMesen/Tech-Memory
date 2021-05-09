@@ -4,8 +4,17 @@
   cursor: pointer;
 }
 
+.MemoryCard-inside {
+  display: flex;
+  height: 100px;
+  width: 100%;
+  padding: 10px 0 5px 0;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+}
 .MemoryCard-tech {
-  font-size: 24px;
+  font-size: 18px;
 }
 
 .MemoryCard-cap {
@@ -28,6 +37,12 @@
   font-size: 50px;
   font-weight: 700;
   color: #838383;
+}
+
+.MemoryCard-image {
+  object-fit: cover;
+  max-width: 70%;
+  max-height: 70px;
 }
 
 @media only screen and (max-width: 767px) {

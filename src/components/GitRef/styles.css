@@ -1,0 +1,9 @@
+.GitIcon {
+  display: inline-flex;
+  color: #fff;
+  gap: 4px;
+  align-items: center;
+  padding: 5px 10px;
+  border-radius: 50px;
+  background-color: #151515;
+}

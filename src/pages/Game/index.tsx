@@ -1,23 +1,41 @@
-import { useMemo, ReactElement } from 'react';
-import { useMemory, ActionType } from '../../state/Memory';
+import { useEffect, useState, useMemo, ReactElement } from 'react';
 import Confetti from 'react-confetti';
+
+import { useMemory, ActionType } from '../../state/Memory';
+import { Tech } from '../../app/types';
+import Firestore from '../../services/firestore';
 
 import { MemoryCard } from '../../components/MemoryCard';
 import { GameCounter } from '../../components/GameCounter';
 import { Button } from '../../components/Button';
 import { GameFeedbackBot } from '../../components/GameFeedbackBot';
 import { WinnerModal } from '../../components/WinnerModal';
-import './styles.css';
+import { Loader } from '../../components/Loader';
 
-import techList from '../../app/mock-tech.json';
-import { Tech } from '../../app/types';
 import { transformTechs } from '../../utils/transform-tech';
+import './styles.css';
 
 export const Game = (): ReactElement => {
   const { state, dispatch } = useMemory();
+  const [techList, setTechList] = useState<Tech[]>([]);
 
   const techCardsList = useMemo(() => {
-    return transformTechs(techList);
+    return techList ? transformTechs(techList) : [];
+  }, [techList]);
+
+  useEffect(() => {
+    let componentIsStillMounth = true;
+    const getRecords = async () => {
+      const objFirestore = new Firestore<Tech>('techs');
+      const apiTechList = await objFirestore.readAll();
+      if (componentIsStillMounth && apiTechList) {
+        setTechList(apiTechList);
+      }
+    };
+    getRecords();
+    return () => {
+      componentIsStillMounth = false;
+    };
   }, []);
 
   const handleTryShowCard = (tech: Tech) => {
@@ -41,7 +59,7 @@ export const Game = (): ReactElement => {
 
   return (
     <div className='Game-container'>
-      {state.guessedTech.length === techList.length && (
+      {techList && state.guessedTech.length === techList.length && (
         <>
           <Confetti />
           <WinnerModal />
@@ -57,22 +75,28 @@ export const Game = (): ReactElement => {
           </Button>
         )}
       </section>
-      <section className='Game-cards'>
-        {techCardsList.map((tech, index) => (
-          <MemoryCard
-            key={index}
-            opened={Boolean(
-              state.cardsShown.find(findedTech => findedTech.id === tech.id) ||
-                state.guessedTech.find(
-                  findedTech => findedTech.name === tech.name
-                )
-            )}
-            onClick={() => handleTryShowCard(tech)}
-            tech={tech}
-            disabled={state.cardsShown.length === 2}
-          />
-        ))}
-      </section>
+      {techCardsList.length > 0 ? (
+        <section className='Game-cards'>
+          {techCardsList.map((tech, index) => (
+            <MemoryCard
+              key={index}
+              opened={Boolean(
+                state.cardsShown.find(
+                  findedTech => findedTech.id === tech.id
+                ) ||
+                  state.guessedTech.find(
+                    findedTech => findedTech.name === tech.name
+                  )
+              )}
+              onClick={() => handleTryShowCard(tech)}
+              tech={tech}
+              disabled={state.cardsShown.length === 2}
+            />
+          ))}
+        </section>
+      ) : (
+        <Loader />
+      )}
     </div>
   );
 };

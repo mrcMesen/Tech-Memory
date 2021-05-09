@@ -1,6 +1,6 @@
 import { useEffect, useState, ReactElement } from 'react';
 import { HistoryRecord } from '../../app/types';
-import Loader from '../../components/Loader';
+import { Loader } from '../../components/Loader';
 import { Participant } from '../../components/Participant';
 import Firestore from '../../services/firestore';
 import './styles.css';

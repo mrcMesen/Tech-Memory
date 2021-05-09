@@ -8,9 +8,10 @@
 
 .Title-content {
   margin: 20px auto;
-  padding: 20px 0;
+  /* margin-top: 40px; */
+  padding: 10px 0;
   width: 80%;
-  background-color: #fff;
+  /* background-color: #fff; */
   text-align: center;
 }
 .Title-text {
@@ -28,30 +29,30 @@
   width: 80%;
 }
 
-.Footer {
+.Navbar {
+  box-sizing: border-box;
   width: 100%;
-  min-height: 150px;
+  padding: 10px 5%;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  align-items: center;
+  color: #000;
+  background: rgba(120, 190, 179, 0.2);
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.25);
+}
+
+.Navbar-MMC {
+  font-size: 18px;
+  font-weight: 300;
+  display: flex;
   align-items: center;
 }
 
-.Footer-presentation {
-  color: white;
+.Navbar-name {
+  margin-right: 5px;
 }
-
-.Footer h2,
-.Footer h4 {
-  font-weight: 200;
-  margin: 0;
-}
-
-.Footer h2 {
-  letter-spacing: 4px;
-}
-
-.Footer h4 {
-  letter-spacing: 3px;
+.Navbar-icons {
+  margin-right: 5px;
 }
 
 @media only screen and (max-width: 768px) {
@@ -63,5 +64,11 @@
   .App-content {
     flex: 1 1 0%;
     width: 90%;
+  }
+  .Navbar-name {
+    display: none;
+  }
+  .Navbar-mail {
+    display: none;
   }
 }

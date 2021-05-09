@@ -1,7 +1,7 @@
 export interface Tech {
   id?: string;
   name: string;
-  uri?: string;
+  image: string;
 }
 export interface GameBoth {
   title: string;

@@ -1,7 +1,7 @@
 import { ReactElement } from 'react';
 import './styles.css';
 
-export default function Loader(): ReactElement {
+export const Loader = (): ReactElement => {
   return (
     <div className='Loader'>
       {/* <p>Loading</p> */}
@@ -18,4 +18,4 @@ export default function Loader(): ReactElement {
       </div>
     </div>
   );
-}
+};
