@@ -18,10 +18,11 @@ import './styles.css';
 export const Game = (): ReactElement => {
   const { state, dispatch } = useMemory();
   const [techList, setTechList] = useState<Tech[]>([]);
+  const [reset, setReset] = useState<boolean>(false);
 
   const techCardsList = useMemo(() => {
     return techList ? transformTechs(techList) : [];
-  }, [techList]);
+  }, [techList, reset]);
 
   useEffect(() => {
     let componentIsStillMounth = true;
@@ -59,10 +60,10 @@ export const Game = (): ReactElement => {
 
   return (
     <div className='Game-container'>
-      {techList && state.guessedTech.length === techList.length && (
+      {techList.length > 0 && state.guessedTech.length === techList.length && (
         <>
           <Confetti />
-          <WinnerModal />
+          <WinnerModal reset={() => setReset(prev => !prev)} />
         </>
       )}
       <section className='Game-header'>

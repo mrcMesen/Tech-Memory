@@ -11,7 +11,11 @@ import { Button } from '../Button';
 import './styles.css';
 import { Spinner } from '../Spinner';
 
-export const WinnerModal = (): ReactElement => {
+interface Props {
+  reset: () => void;
+}
+
+export const WinnerModal = ({ reset }: Props): ReactElement => {
   const { state, dispatch } = useMemory();
   const [loading, setLoading] = useState<boolean>(false);
   const [nickName, setnickName] = useState<string>('');
@@ -24,6 +28,7 @@ export const WinnerModal = (): ReactElement => {
   }, [state.startedGameAt, state.finishedGameAt]);
 
   const handleClose = () => {
+    reset();
     dispatch({ type: ActionType.RESET_GAME });
   };
 
