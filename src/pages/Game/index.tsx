@@ -12,17 +12,16 @@ import { GameFeedbackBot } from '../../components/GameFeedbackBot';
 import { WinnerModal } from '../../components/WinnerModal';
 import { Loader } from '../../components/Loader';
 
-import { transformTechs } from '../../utils/transform-tech';
+import { transformTechs, reorderTechs } from '../../utils/transform-tech';
 import './styles.css';
 
 export const Game = (): ReactElement => {
   const { state, dispatch } = useMemory();
   const [techList, setTechList] = useState<Tech[]>([]);
-  const [reset, setReset] = useState<boolean>(false);
 
   const techCardsList = useMemo(() => {
-    return techList ? transformTechs(techList) : [];
-  }, [techList, reset]);
+    return techList.length > 0 ? transformTechs(techList) : [];
+  }, [techList]);
 
   useEffect(() => {
     let componentIsStillMounth = true;
@@ -57,13 +56,12 @@ export const Game = (): ReactElement => {
   };
 
   const handleStartGame = () => dispatch({ type: ActionType.START_GAME });
-
   return (
     <div className='Game-container'>
       {techList.length > 0 && state.guessedTech.length === techList.length && (
         <>
           <Confetti />
-          <WinnerModal reset={() => setReset(prev => !prev)} />
+          <WinnerModal reset={() => setTechList(reorderTechs(techList))} />
         </>
       )}
       <section className='Game-header'>
