@@ -11,22 +11,22 @@ import './styles.css';
 
 const GuessedMessages = [
   {
-    title: '👏 Yeeaaa!',
-    message: 'Bien hecho! Haz encontrado una pareja',
+    title: '👏 Yeeaaah!',
+    message: 'Well done! You have found a partner',
   },
   {
-    title: '🎉 Extraordinario!',
-    message: 'Sigue así! Podrás lograrlo!',
+    title: '🎉 Extraordinary!',
+    message: 'Keep it up! You can do it!',
   },
 ];
 const NotGuessedMessages = [
   {
     title: '😅 Ohhh no!',
-    message: 'Intenta recordarlas para más adelante.',
+    message: 'Try to remember them for later.',
   },
   {
-    title: '😓 Que mal!',
-    message: 'No te desanimes, la estamos pasando bien!',
+    title: '😓 That bad!',
+    message: "Don't be discouraged, we're having a good time!",
   },
 ];
 
