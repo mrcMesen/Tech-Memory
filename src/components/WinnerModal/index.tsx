@@ -79,7 +79,10 @@ export const WinnerModal = ({ reset }: Props): ReactElement => {
             className='WinnerModal-input'
             type='text'
             id='input-record'
+            maxLength={14}
+            required
           />
+          <span className='WinnerModal-help-input'>14 characters max</span>
           <Button
             type='submit'
             className='WinnerModal-button'
