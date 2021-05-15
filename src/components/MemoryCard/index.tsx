@@ -35,16 +35,18 @@ export const MemoryCard = ({ opened, tech, disabled, onClick }: Props) => {
         className='MemoryCard flex-full-center overflow-hidden'
         shadow={opened ? 'inside' : 'outside'}
       >
-        <div className='MemoryCard-inside'>
-          {image ? (
-            <img
-              className='MemoryCard-image'
-              src={image}
-              alt={`${tech.name} - Logo`}
-            />
-          ) : null}
-          <span className='MemoryCard-tech'>{tech.name}</span>
-        </div>
+        {opened ? (
+          <div className='MemoryCard-inside'>
+            {image ? (
+              <img
+                className='MemoryCard-image'
+                src={image}
+                alt={`${tech.name} - Logo`}
+              />
+            ) : null}
+            <span className='MemoryCard-tech'>{tech.name}</span>
+          </div>
+        ) : null}
         <div
           className={`MemoryCard-cap ${
             opened
